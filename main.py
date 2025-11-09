@@ -9,7 +9,6 @@ def build_inverted_index(folder_path):
         if filename.endswith(".txt"):
             with open(os.path.join(folder_path, filename), "r", encoding="utf-8") as f:
                 text = f.read().lower()
-                # הסרת סימני פיסוק
                 text = text.translate(str.maketrans('', '', string.punctuation))
                 words = text.split()
                 for word in set(words):
@@ -37,7 +36,7 @@ if __name__ == "__main__":
             break
         results = search_query(inverted_index, query)
         if results:
-            print("🔍 Relevant documents:")
+            print(" Relevant documents:")
             for doc, score in results:
                 print(f"{doc} (score: {score})")
         else:
